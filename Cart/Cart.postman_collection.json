@@ -1,0 +1,1113 @@
+{
+	"info": {
+		"_postman_id": "b02b3f29-fe31-4204-94ee-593edefc0bea",
+		"name": "Cart",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45597837",
+		"_collection_link": "https://apitest-4784.postman.co/workspace/FakeStoreAPITest~2c19129c-d39c-4855-a40b-4e075f26f92f/collection/45597837-b02b3f29-fe31-4204-94ee-593edefc0bea?action=share&source=collection_link&creator=45597837"
+	},
+	"item": [
+		{
+			"name": "Get All Cart Items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"const expected_schema = {",
+							"    \"type\": \"object\",",
+							"    \"properties\": {",
+							"        \"id\": {",
+							"            \"type\": \"integer\"",
+							"        },",
+							"        \"userId\": {",
+							"            \"type\": \"integer\"",
+							"        },",
+							"        \"date\": {",
+							"            \"type\": \"string\"",
+							"        },",
+							"        \"products\": {",
+							"            \"type\": \"array\",",
+							"            \"items\": [",
+							"                {",
+							"                    \"type\": \"object\",",
+							"                    \"properties\": {",
+							"                        \"productId\": {",
+							"                            \"type\": \"integer\"",
+							"                        },",
+							"                        \"quantity\": {",
+							"                            \"type\": \"integer\"",
+							"                        }",
+							"                    },",
+							"                    \"required\": [",
+							"                        \"productId\",",
+							"                        \"quantity\"",
+							"                    ]",
+							"                },",
+							"                {",
+							"                    \"type\": \"object\",",
+							"                    \"properties\": {",
+							"                        \"productId\": {",
+							"                            \"type\": \"integer\"",
+							"                        },",
+							"                        \"quantity\": {",
+							"                            \"type\": \"integer\"",
+							"                        }",
+							"                    },",
+							"                    \"required\": [",
+							"                        \"productId\",",
+							"                        \"quantity\"",
+							"                    ]",
+							"                },",
+							"                {",
+							"                    \"type\": \"object\",",
+							"                    \"properties\": {",
+							"                        \"productId\": {",
+							"                            \"type\": \"integer\"",
+							"                        },",
+							"                        \"quantity\": {",
+							"                            \"type\": \"integer\"",
+							"                        }",
+							"                    },",
+							"                    \"required\": [",
+							"                        \"productId\",",
+							"                        \"quantity\"",
+							"                    ]",
+							"                }",
+							"            ]",
+							"        },",
+							"        \"__v\": {",
+							"            \"type\": \"integer\"",
+							"        }",
+							"    },",
+							"    \"required\": [",
+							"        \"id\",",
+							"        \"userId\",",
+							"        \"date\",",
+							"        \"products\",",
+							"        \"__v\"",
+							"    ]",
+							"};",
+							"",
+							"",
+							"pm.test(\"Validate response is an array and not empty\", () => {",
+							"    pm.expect(jsonData).to.be.an(\"array\").and.is.not.empty;",
+							"});",
+							"",
+							"pm.test(\"Valisdate JSON Schema\", () => {",
+							"    jsonData.forEach(function (item) {",
+							"        pm.expect(item).to.be.jsonSchema(expected_schema);",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/carts",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single Cart Item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"const expected_schema = {",
+							"    \"type\": \"object\",",
+							"    \"properties\": {",
+							"        \"id\": {",
+							"            \"type\": \"integer\"",
+							"        },",
+							"        \"userId\": {",
+							"            \"type\": \"integer\"",
+							"        },",
+							"        \"date\": {",
+							"            \"type\": \"string\"",
+							"        },",
+							"        \"products\": {",
+							"            \"type\": \"array\",",
+							"            \"items\": [",
+							"                {",
+							"                    \"type\": \"object\",",
+							"                    \"properties\": {",
+							"                        \"productId\": {",
+							"                            \"type\": \"integer\"",
+							"                        },",
+							"                        \"quantity\": {",
+							"                            \"type\": \"integer\"",
+							"                        }",
+							"                    },",
+							"                    \"required\": [",
+							"                        \"productId\",",
+							"                        \"quantity\"",
+							"                    ]",
+							"                },",
+							"                {",
+							"                    \"type\": \"object\",",
+							"                    \"properties\": {",
+							"                        \"productId\": {",
+							"                            \"type\": \"integer\"",
+							"                        },",
+							"                        \"quantity\": {",
+							"                            \"type\": \"integer\"",
+							"                        }",
+							"                    },",
+							"                    \"required\": [",
+							"                        \"productId\",",
+							"                        \"quantity\"",
+							"                    ]",
+							"                },",
+							"                {",
+							"                    \"type\": \"object\",",
+							"                    \"properties\": {",
+							"                        \"productId\": {",
+							"                            \"type\": \"integer\"",
+							"                        },",
+							"                        \"quantity\": {",
+							"                            \"type\": \"integer\"",
+							"                        }",
+							"                    },",
+							"                    \"required\": [",
+							"                        \"productId\",",
+							"                        \"quantity\"",
+							"                    ]",
+							"                }",
+							"            ]",
+							"        },",
+							"        \"__v\": {",
+							"            \"type\": \"integer\"",
+							"        }",
+							"    },",
+							"    \"required\": [",
+							"        \"id\",",
+							"        \"userId\",",
+							"        \"date\",",
+							"        \"products\",",
+							"        \"__v\"",
+							"    ]",
+							"};",
+							"",
+							"",
+							"pm.test(\"Validate response is an object and not empty\", () => {",
+							"    pm.expect(jsonData).to.be.an('object').and.is.not.empty;",
+							"});",
+							"",
+							"pm.test(\"Validate Expected Product\", () => {",
+							"    pm.expect(jsonData.id).to.be.eql(parseInt(pm.collectionVariables.get(\"cart_id\")));",
+							"});",
+							"",
+							"pm.test(\"Validate JSON Schema\", () => {",
+							"    pm.expect(jsonData).to.have.jsonSchema(expected_schema);",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/carts/{{cart_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"carts",
+						"{{cart_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get limited Cart Items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"const expected_schema = {",
+							"    \"type\": \"object\",",
+							"    \"properties\": {",
+							"        \"id\": {",
+							"            \"type\": \"integer\"",
+							"        },",
+							"        \"userId\": {",
+							"            \"type\": \"integer\"",
+							"        },",
+							"        \"date\": {",
+							"            \"type\": \"string\"",
+							"        },",
+							"        \"products\": {",
+							"            \"type\": \"array\",",
+							"            \"items\": [",
+							"                {",
+							"                    \"type\": \"object\",",
+							"                    \"properties\": {",
+							"                        \"productId\": {",
+							"                            \"type\": \"integer\"",
+							"                        },",
+							"                        \"quantity\": {",
+							"                            \"type\": \"integer\"",
+							"                        }",
+							"                    },",
+							"                    \"required\": [",
+							"                        \"productId\",",
+							"                        \"quantity\"",
+							"                    ]",
+							"                },",
+							"                {",
+							"                    \"type\": \"object\",",
+							"                    \"properties\": {",
+							"                        \"productId\": {",
+							"                            \"type\": \"integer\"",
+							"                        },",
+							"                        \"quantity\": {",
+							"                            \"type\": \"integer\"",
+							"                        }",
+							"                    },",
+							"                    \"required\": [",
+							"                        \"productId\",",
+							"                        \"quantity\"",
+							"                    ]",
+							"                },",
+							"                {",
+							"                    \"type\": \"object\",",
+							"                    \"properties\": {",
+							"                        \"productId\": {",
+							"                            \"type\": \"integer\"",
+							"                        },",
+							"                        \"quantity\": {",
+							"                            \"type\": \"integer\"",
+							"                        }",
+							"                    },",
+							"                    \"required\": [",
+							"                        \"productId\",",
+							"                        \"quantity\"",
+							"                    ]",
+							"                }",
+							"            ]",
+							"        },",
+							"        \"__v\": {",
+							"            \"type\": \"integer\"",
+							"        }",
+							"    },",
+							"    \"required\": [",
+							"        \"id\",",
+							"        \"userId\",",
+							"        \"date\",",
+							"        \"products\",",
+							"        \"__v\"",
+							"    ]",
+							"};",
+							"",
+							"",
+							"pm.test(\"Validate response is an array and not empty\", () => {",
+							"    pm.expect(jsonData).to.be.an(\"array\").and.is.not.empty;",
+							"});",
+							"",
+							"pm.test(\"Validate Expected JSON Schema\", () => {",
+							"    jsonData.forEach(function (item) {",
+							"        pm.expect(item).to.be.jsonSchema(expected_schema);",
+							"    });",
+							"});",
+							"",
+							"pm.test(\"Validate Cart Item Limit\", () => {",
+							"    pm.expect(jsonData.length).to.be.eql(parseInt(pm.collectionVariables.get(\"limit\")));",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/carts?limit={{limit}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"carts"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "{{limit}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Sorted Cart Items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"const expected_schema = {",
+							"    \"type\": \"object\",",
+							"    \"properties\": {",
+							"        \"id\": {",
+							"            \"type\": \"integer\"",
+							"        },",
+							"        \"userId\": {",
+							"            \"type\": \"integer\"",
+							"        },",
+							"        \"date\": {",
+							"            \"type\": \"string\"",
+							"        },",
+							"        \"products\": {",
+							"            \"type\": \"array\",",
+							"            \"items\": [",
+							"                {",
+							"                    \"type\": \"object\",",
+							"                    \"properties\": {",
+							"                        \"productId\": {",
+							"                            \"type\": \"integer\"",
+							"                        },",
+							"                        \"quantity\": {",
+							"                            \"type\": \"integer\"",
+							"                        }",
+							"                    },",
+							"                    \"required\": [",
+							"                        \"productId\",",
+							"                        \"quantity\"",
+							"                    ]",
+							"                },",
+							"                {",
+							"                    \"type\": \"object\",",
+							"                    \"properties\": {",
+							"                        \"productId\": {",
+							"                            \"type\": \"integer\"",
+							"                        },",
+							"                        \"quantity\": {",
+							"                            \"type\": \"integer\"",
+							"                        }",
+							"                    },",
+							"                    \"required\": [",
+							"                        \"productId\",",
+							"                        \"quantity\"",
+							"                    ]",
+							"                },",
+							"                {",
+							"                    \"type\": \"object\",",
+							"                    \"properties\": {",
+							"                        \"productId\": {",
+							"                            \"type\": \"integer\"",
+							"                        },",
+							"                        \"quantity\": {",
+							"                            \"type\": \"integer\"",
+							"                        }",
+							"                    },",
+							"                    \"required\": [",
+							"                        \"productId\",",
+							"                        \"quantity\"",
+							"                    ]",
+							"                }",
+							"            ]",
+							"        },",
+							"        \"__v\": {",
+							"            \"type\": \"integer\"",
+							"        }",
+							"    },",
+							"    \"required\": [",
+							"        \"id\",",
+							"        \"userId\",",
+							"        \"date\",",
+							"        \"products\",",
+							"        \"__v\"",
+							"    ]",
+							"};",
+							"",
+							"pm.test(\"Validate response is an array and not empty\", () => {",
+							"    pm.expect(jsonData).to.be.an(\"array\").and.is.not.empty;",
+							"});",
+							"",
+							"pm.test(\"Validate JSON Schema\", () => {",
+							"    jsonData.forEach(function (item) {",
+							"        pm.expect(item).to.be.jsonSchema(expected_schema);",
+							"    });",
+							"});",
+							"",
+							"pm.test(\"Validate returned items are in sorted order\", () => {",
+							"    sorting_order = pm.collectionVariables.get(\"sort\");",
+							"    if (sorting_order == \"asc\") {",
+							"        pm.expect(jsonData[0].id).to.be.eql(1);",
+							"    } else {",
+							"        pm.expect(jsonData[0].id).to.be.eql(7)",
+							"    };",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/carts?sort={{sort}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"carts"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "{{sort}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Cart Items in Date Range",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/carts?startdate=2020-01-01&enddate=2020-01-30",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"carts"
+					],
+					"query": [
+						{
+							"key": "startdate",
+							"value": "2020-01-01"
+						},
+						{
+							"key": "enddate",
+							"value": "2020-01-30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Specific Cart Items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"const expected_schema = {",
+							"    \"type\": \"object\",",
+							"    \"properties\": {",
+							"        \"id\": {",
+							"            \"type\": \"integer\"",
+							"        },",
+							"        \"userId\": {",
+							"            \"type\": \"integer\"",
+							"        },",
+							"        \"date\": {",
+							"            \"type\": \"string\"",
+							"        },",
+							"        \"products\": {",
+							"            \"type\": \"array\",",
+							"            \"items\": [",
+							"                {",
+							"                    \"type\": \"object\",",
+							"                    \"properties\": {",
+							"                        \"productId\": {",
+							"                            \"type\": \"integer\"",
+							"                        },",
+							"                        \"quantity\": {",
+							"                            \"type\": \"integer\"",
+							"                        }",
+							"                    },",
+							"                    \"required\": [",
+							"                        \"productId\",",
+							"                        \"quantity\"",
+							"                    ]",
+							"                },",
+							"                {",
+							"                    \"type\": \"object\",",
+							"                    \"properties\": {",
+							"                        \"productId\": {",
+							"                            \"type\": \"integer\"",
+							"                        },",
+							"                        \"quantity\": {",
+							"                            \"type\": \"integer\"",
+							"                        }",
+							"                    },",
+							"                    \"required\": [",
+							"                        \"productId\",",
+							"                        \"quantity\"",
+							"                    ]",
+							"                },",
+							"                {",
+							"                    \"type\": \"object\",",
+							"                    \"properties\": {",
+							"                        \"productId\": {",
+							"                            \"type\": \"integer\"",
+							"                        },",
+							"                        \"quantity\": {",
+							"                            \"type\": \"integer\"",
+							"                        }",
+							"                    },",
+							"                    \"required\": [",
+							"                        \"productId\",",
+							"                        \"quantity\"",
+							"                    ]",
+							"                }",
+							"            ]",
+							"        },",
+							"        \"__v\": {",
+							"            \"type\": \"integer\"",
+							"        }",
+							"    },",
+							"    \"required\": [",
+							"        \"id\",",
+							"        \"userId\",",
+							"        \"date\",",
+							"        \"products\",",
+							"        \"__v\"",
+							"    ]",
+							"};",
+							"",
+							"pm.test(\"Validate response is an array and not empty\", () => {",
+							"    pm.expect(jsonData).to.be.a(\"array\").and.is.not.empty;",
+							"});",
+							"",
+							"",
+							"pm.test(\"Expected JSON schema Validation\", () => {",
+							"    jsonData.forEach(function (item) {",
+							"        pm.expect(item).to.be.jsonSchema(expected_schema);",
+							"    });",
+							"});",
+							"",
+							"pm.test(\"Vaidate only given users cart item is returned\", () => {",
+							"    let user_id = pm.collectionVariables.get(\"user_id\");",
+							"    jsonData.forEach(function (item) {",
+							"        pm.expect(item.userId).to.be.eql(user_id);",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/carts/user/{{user_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"carts",
+						"user",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add to Cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"const expected_schema = {",
+							"    \"type\": \"object\",",
+							"    \"properties\": {",
+							"        \"id\": {",
+							"            \"type\": \"integer\"",
+							"        },",
+							"        \"userId\": {",
+							"            \"type\": \"integer\"",
+							"        },",
+							"        \"date\": {",
+							"            \"type\": \"string\"",
+							"        },",
+							"        \"products\": {",
+							"            \"type\": \"array\",",
+							"            \"items\": [",
+							"                {",
+							"                    \"type\": \"object\",",
+							"                    \"properties\": {",
+							"                        \"productId\": {",
+							"                            \"type\": \"integer\"",
+							"                        },",
+							"                        \"quantity\": {",
+							"                            \"type\": \"integer\"",
+							"                        }",
+							"                    },",
+							"                    \"required\": [",
+							"                        \"productId\",",
+							"                        \"quantity\"",
+							"                    ]",
+							"                }",
+							"            ]",
+							"        }",
+							"    },",
+							"    \"required\": [",
+							"        \"id\",",
+							"        \"userId\",",
+							"        \"date\",",
+							"        \"products\"",
+							"    ]",
+							"};",
+							"",
+							"pm.test(\"Validate Expected Cart Item\", () => {",
+							"    pm.expect(jsonData.userId).to.be.eql(parseInt(pm.collectionVariables.get(\"user_id\")));",
+							"    pm.expect(jsonData.products[0].productId).to.be.eql(parseInt(pm.collectionVariables.get(\"product_id\")));",
+							"    pm.expect(jsonData.products[0].quantity).to.be.eql(parseInt(pm.collectionVariables.get(\"quantity\")));",
+							"});",
+							"",
+							"pm.test(\"Validate only one product is added to cart\", () => {",
+							"    pm.expect(jsonData.products.length).to.be.eql(1);",
+							"});",
+							"",
+							"pm.test(\"Validate response is an object and not empty\", () => {",
+							"    pm.expect(jsonData).to.be.an('object').and.is.not.empty;",
+							"});",
+							"",
+							"pm.test(\"Validate Expected JSON Schema\", () => {",
+							"    pm.expect(jsonData).to.be.jsonSchema(expected_schema);",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": {{user_id}},\n    \"date\": \"{{date}}\",\n    \"products\": [\n        {\n            \"productId\": {{product_id}},\n            \"quantity\": {{quantity}}\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/carts",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"const expected_schema = {",
+							"    \"type\": \"object\",",
+							"    \"properties\": {",
+							"        \"id\": {",
+							"            \"type\": \"integer\"",
+							"        },",
+							"        \"userId\": {",
+							"            \"type\": \"integer\"",
+							"        },",
+							"        \"date\": {",
+							"            \"type\": \"string\"",
+							"        },",
+							"        \"products\": {",
+							"            \"type\": \"array\",",
+							"            \"items\": [",
+							"                {",
+							"                    \"type\": \"object\",",
+							"                    \"properties\": {",
+							"                        \"productId\": {",
+							"                            \"type\": \"integer\"",
+							"                        },",
+							"                        \"quantity\": {",
+							"                            \"type\": \"integer\"",
+							"                        }",
+							"                    },",
+							"                    \"required\": [",
+							"                        \"productId\",",
+							"                        \"quantity\"",
+							"                    ]",
+							"                }",
+							"            ]",
+							"        }",
+							"    },",
+							"    \"required\": [",
+							"        \"id\",",
+							"        \"userId\",",
+							"        \"date\",",
+							"        \"products\"",
+							"    ]",
+							"};",
+							"",
+							"pm.test(\"Validate Expected Cart Item\", () => {",
+							"    pm.expect(jsonData.userId).to.be.eql(parseInt(pm.collectionVariables.get(\"user_id\")));",
+							"    pm.expect(jsonData.products[0].productId).to.be.eql(parseInt(pm.collectionVariables.get(\"product_id\")));",
+							"    pm.expect(jsonData.products[0].quantity).to.be.eql(parseInt(pm.collectionVariables.get(\"quantity\")));",
+							"});",
+							"",
+							"pm.test(\"Validate only one product is added to cart\", () => {",
+							"    pm.expect(jsonData.products.length).to.be.eql(1);",
+							"});",
+							"",
+							"pm.test(\"Validate response is an object and not empty\", () => {",
+							"    pm.expect(jsonData).to.be.an('object').and.is.not.empty;",
+							"});",
+							"",
+							"pm.test(\"Validate Expected JSON Schema\", () => {",
+							"    pm.expect(jsonData).to.be.jsonSchema(expected_schema);",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": {{user_id}},\n    \"date\": \"{{date}}\",\n    \"products\": [\n        {\n            \"productId\": {{product_id}},\n            \"quantity\": {{quantity}}\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/carts/{{cart_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"carts",
+						"{{cart_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Partial Upate Cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"const expected_schema = {",
+							"    \"type\": \"object\",",
+							"    \"properties\": {",
+							"        \"id\": {",
+							"            \"type\": \"integer\"",
+							"        },",
+							"        \"userId\": {",
+							"            \"type\": \"integer\"",
+							"        },",
+							"        \"date\": {",
+							"            \"type\": \"string\"",
+							"        },",
+							"        \"products\": {",
+							"            \"type\": \"array\",",
+							"            \"items\": [",
+							"                {",
+							"                    \"type\": \"object\",",
+							"                    \"properties\": {",
+							"                        \"productId\": {",
+							"                            \"type\": \"integer\"",
+							"                        },",
+							"                        \"quantity\": {",
+							"                            \"type\": \"integer\"",
+							"                        }",
+							"                    },",
+							"                    \"required\": [",
+							"                        \"productId\",",
+							"                        \"quantity\"",
+							"                    ]",
+							"                }",
+							"            ]",
+							"        }",
+							"    },",
+							"    \"required\": [",
+							"        \"id\",",
+							"        \"userId\",",
+							"        \"date\",",
+							"        \"products\"",
+							"    ]",
+							"};",
+							"",
+							"pm.test(\"Validate Expected Cart Item\", () => {",
+							"    pm.expect(jsonData.userId).to.be.eql(parseInt(pm.collectionVariables.get(\"user_id\")));",
+							"    pm.expect(jsonData.products[0].productId).to.be.eql(parseInt(pm.collectionVariables.get(\"product_id\")));",
+							"    pm.expect(jsonData.products[0].quantity).to.be.eql(parseInt(pm.collectionVariables.get(\"quantity\")));",
+							"});",
+							"",
+							"pm.test(\"Validate only one product is added to cart\", () => {",
+							"    pm.expect(jsonData.products.length).to.be.eql(1);",
+							"});",
+							"",
+							"pm.test(\"Validate response is an object and not empty\", () => {",
+							"    pm.expect(jsonData).to.be.an('object').and.is.not.empty;",
+							"});",
+							"",
+							"pm.test(\"Validate Expected JSON Schema\", () => {",
+							"    pm.expect(jsonData).to.be.jsonSchema(expected_schema);",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": {{user_id}},\n    \"date\": \"{{date}}\",\n    \"products\": [\n        {\n            \"productId\": {{product_id}},\n            \"quantity\": {{quantity}}\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/carts/{{cart_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"carts",
+						"{{cart_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Validate response is an object and not empty\", () => {",
+							"    pm.expect(jsonData).to.be.an('object').and.is.not.empty;",
+							"});",
+							"",
+							"pm.test(\"Validate Expected product is Deleted\", () => {",
+							"    pm.expect(jsonData.id).to.be.eql(parseInt(pm.collectionVariables.get(\"cart_id\")));",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/carts/{{cart_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"carts",
+						"{{cart_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"const limit = pm.variables.replaceIn('{{$randomInt}}') % 7 + 1;",
+					"pm.collectionVariables.set(\"limit\", limit);",
+					"",
+					"const _ = require('lodash');",
+					"const order = ['desc', 'asc'];",
+					"const idx = _.random(0, order.length - 1);",
+					"pm.collectionVariables.set('sort', order[idx]);",
+					"",
+					"pm.collectionVariables.set(\"cart_id\", pm.iterationData.get(\"cart_id\"));",
+					"pm.collectionVariables.set(\"product_id\", pm.iterationData.get(\"product_id\"));",
+					"pm.collectionVariables.set(\"user_id\", pm.iterationData.get(\"user_id\"));",
+					"pm.collectionVariables.set(\"quantity\", pm.iterationData.get(\"quantity\"));",
+					"pm.collectionVariables.set(\"date\", pm.iterationData.get(\"date\"));"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"pm.test(\"Validate Success Code\",()=>{",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "limit",
+			"value": ""
+		},
+		{
+			"key": "sort",
+			"value": ""
+		},
+		{
+			"key": "cart_id",
+			"value": ""
+		},
+		{
+			"key": "product_id",
+			"value": ""
+		},
+		{
+			"key": "user_id",
+			"value": ""
+		},
+		{
+			"key": "quantity",
+			"value": ""
+		},
+		{
+			"key": "data",
+			"value": ""
+		},
+		{
+			"key": "date",
+			"value": ""
+		}
+	]
+}
